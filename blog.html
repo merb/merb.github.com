@@ -1,0 +1,19 @@
+---
+layout: default
+title: "Blog"
+current: "blog"
+---
+
+<div class='full_width' id='content_top'>
+  <div id='content_bottom'>
+    <div id='content_full'>
+      <h1>Blog</h1>
+      
+      <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

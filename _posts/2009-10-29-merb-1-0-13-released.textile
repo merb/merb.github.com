@@ -1,0 +1,6 @@
+---
+layout: blog
+title: Merb 1.0.13 Released
+---
+
+h1. {{ page.title }}

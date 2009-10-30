@@ -10,16 +10,17 @@
     <meta content='text/html;charset=utf-8' http-equiv='content-type' />
     <meta content='no' http-equiv='msthemecompatible' />
     <meta content='false' http-equiv='imagetoolbar' />
-    <link href="stylesheets/merb.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/merb.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div id='header'>
       <div class='wrap_to_center'>
         <div id='logo'>
-          <img alt='Merb' src='img/header_logo.png' />
+          <img alt='Merb' src='/img/header_logo.png' />
         </div>
         <ul id='nav'>
           <li><a href="index.html" {% if page.current == "home" %}id="active"{% endif %}>Home</a></li>
+          <!-- <li><a href="blog.html" {% if page.current == "blog" %}id="active"{% endif %}>Blog</a></li> -->
           <li><a href="why_merb.html" {% if page.current == "why_merb" %}id="active"{% endif %}>Why Merb?</a></li>
           <li><a href="features.html" {% if page.current == "features" %}id="active"{% endif %}>Features</a></li>
           <li><a href="contribute.html" {% if page.current == "contribute" %}id="active"{% endif %}>Contribute</a></li>
