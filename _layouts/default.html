@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Merb | {{ page.title }}</title>
+    <meta content='text/html;charset=UTF-8' http-equiv='content-type' />
+    <meta content='A light and powerful Ruby MVC web framework' name='description' />
+    <meta content='ruby, web, framework, mvc, fast, performance, scales, uploads' name='keywords' />
+    <meta content='true' name='mssmarttagspreventparsing' />
+    <meta content='all' name='robots' />
+    <meta content='text/html;charset=utf-8' http-equiv='content-type' />
+    <meta content='no' http-equiv='msthemecompatible' />
+    <meta content='false' http-equiv='imagetoolbar' />
+    <link href="stylesheets/merb.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id='header'>
+      <div class='wrap_to_center'>
+        <div id='logo'>
+          <img alt='Merb' src='img/header_logo.png' />
+        </div>
+        <ul id='nav'>
+          <li><a href="index.html" {% if page.current == "home" %}id="active"{% endif %}>Home</a></li>
+          <li><a href="why_merb.html" {% if page.current == "why_merb" %}id="active"{% endif %}>Why Merb?</a></li>
+          <li><a href="features.html" {% if page.current == "features" %}id="active"{% endif %}>Features</a></li>
+          <li><a href="contribute.html" {% if page.current == "contribute" %}id="active"{% endif %}>Contribute</a></li>
+          <li><a href="documentation.html" {% if page.current == "docs" %}id="active"{% endif %}>Docs</a></li>
+          <li><a href="http://wiki.github.com/merb/merb" {% if page.current == "wiki" %}id="active"{% endif %}>Wiki</a></li>
+          <li class='last'><a href="get_merb.html" {% if page.current == "get_merb" %}id="active"{% endif %}>Get Merb</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id='content'>
+      <div class='wrap_to_center'>
+        {{ content }}
+      </div>
+      <div id='footer'>
+        <div class='wrap_to_center'>
+            <p>
+              &copy; 2008 Merb is released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>
+            </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+---
+layout: default
+title: "Contribute"
+current: "contribute"
+---
+
+<div class='full_width' id='content_top'>
+  <div id='content_bottom'>
+    <div id='content_full'>
+      <h1>Contributing to Merb</h1>
+      <h2>Sharing Your Merb Know-How</h2>
+      <p>
+        Merb has a fledgling <a href="http://wiki.github.com/merb/merb" title="Merb Wiki">wiki</a> that would love to meet you. The <a href="http://wiki.github.com/merb/merb" title="Merb Wiki">wiki</a> is a great place to garner and contribute up-to-date information on all things Merb.
+      </p>
+      <h2>Reporting bugs</h2>
+      <p>
+        Found a bug? Ticket it! Go to our <a href="http://merb.lighthouseapp.com/">Lighthouse app</a> and set up a login, then add your ticket. For any tickets that you do add, please try to be as descriptive as possible, the developers well thank you for it.
+      </p>
+      <p>
+        Even if you don&#8217;t feel you contribute code, reporting bugs is a huge help, so please report anything awry you encounter.
+      </p>
+      <h2>Contributing Code to Merb</h2>
+      <p>
+        Contributing to Merb is as easy as checking the source out from Github, editing it, and creating a patch. <a href="http://gweezlebur.com/2008/2/1/so-you-want-to-contribute-to-merb-core-part-1">Learn all about using git, Github, and making patches.</a>
+      </p
+      <pre><code>$ git clone git://github.com/wycats/merb-core.git<br />$ cd merb-core<br />$ vim the_source_file.rb<br />$ git commit -a -m "fix a bug"<br />$ git-format-patch master..</code></pre>
+      <h2>Code Style Guidelines</h2>
+      <p>
+        There are a few guidelines your code should follow.
+      </p>
+      <h3>1. Parentheses around parameter lists for methods</h3>
+      <pre><code># BAD!<br />def my_method param, arg<br />  puts "OH NOEZ!"<br />end<br /><br /># GOOD!<br />def my_method(param, arg)<br />  puts "HOORAYZ!" end</code></pre>
+      <h3>2. Two space indent</h3>
+      <pre><code># BAD!<br />def tabby<br />    puts "A fat tab!"<br />end<br /><br /># GOOD!<br />def tabby<br />  puts "Two spaces!"<br />end</code></pre>
+      <h3>3. Documentation is required</h3>
+      <p>As of 0.9, Merb has a new documentation system. It will be slightly changing for 1.0; for now, please follow these guidelines.</p>
+      <p>There are a number of available types:</p>
+      <ul>
+        <li>Class (e.g. <code>String</code>)</li>
+        <li><code>Array[Type]</code> (e.g. <code>Array[String]</code>, an Array of Strings)</li>
+        <li><code>Array[Type, Type]</code> (e.g. <code>Array[String, Symbol]</code>, an Array of two elements: a String followed by a Symbol)</li>
+        <li><code>Hash{Type => Type}</code> (e.g. <code>Hash{Symbol => String}</code>, a Hash whose keys are Symbols and values are Strings)</li>
+        <li><code>Hash{Type => Type, Type => Type}</code> (e.g. <code>Hash{Symbol => String, Class => String}</code>, a Hash with two elements)</li>
+        <li>Union Types: <code>(String, Symbol)</code>; (e.g. <code>Array[(String, Symbol)]</code>, an Array whose elements are Strings or Symbols)</li>
+        <li>Duck Typing Types: <code>~to_s</code> (<code>responds_to? :to_s</code>)</li>
+      </ul><br/>
+      <p>Certain types of parameters do not require types:</p>
+      <ul>
+        <li>Splats: <code>*args</code></li>
+        <li>Blocks: <code>&blk</code></li>
+      </ul><br/>
+      <p>Parameters are defined in parameter blocks:</p>
+      <pre><code>
+==== Parameters
+foo&lt;String&gt;:: My foo string
+bar&lt;String&gt;:: My bar string
+      </code></pre>
+      <p>The return value of a function is required:</p>
+      <pre><code>
+==== Returns
+String:: A cool string                  
+      </pre></code>
+      <p>If the method might possibly raise an error (including as a result of calling another method), it must be specified:</p>
+      <pre><code>
+==== Raises
+Exception:: A crazy Exception
+      </pre></code>
+      <p>If one of the parameters is an options Hash, it must be specified:</p>
+      <pre><code>
+==== Options (opts)
+:foo&lt;String&gt;:: The foo option
+:bar&lt;Symbol&gt;:: The bar option
+      </pre></code>
+      
+      <h3>4. Be wary of clever code!</h3>
+      <p>
+        Cleverness for cleverness sake is not our friend; if something is only slightly more handy but infinitely more complex, then please reconsider your implementation.
+      </p>
+      <h3>5. Column width</h3>
+      <p>
+        80 column line width except in exceptional situations
+      </p>
+    </div>
+  </div>
+</div>

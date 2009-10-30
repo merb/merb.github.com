@@ -1,0 +1,83 @@
+---
+layout: default
+title: "Features"
+current: "features"
+---
+
+<div class='full_width' id='content_top'>
+  <div id='content_bottom'>
+    <div id='content_full'>
+      <h1>Features</h1>
+      <div class='quicklinks_top'>
+        <ul class='quicklinks_bottom'>
+          <li><a href="">Plugins</a></li>
+          <li><a href="">Controllers</a></li>
+          <li><a href="">Mailers</a></li>
+          <li><a href="">Parts</a></li>
+          <li><a href="">Exceptions</a></li>
+          <li><a href="">Tests</a></li>
+          <li><a href="">Generators</a></li>
+        </ul>
+      </div>
+      <h2>Young, But With So Much Promise</h2>
+      <p>
+        Even though it&#8217;s a very young framework, Merb already has a comprehensive set of features.
+      </p>
+      <h2 id='plugins'>Plugins</h2>
+      <p>
+        Plugins in Merb are implemented as simple gems, which are distributed in the <a href="http://github.com/wycats/merb-plugins/tree/master">merb-plugins</a> Git repository, by third parties, or via the Merb Plugin Nursery on RubyForge. That means that plugins can take advantage, out of the box, for Rubygems’ versioning and dependency control. Plugins can either be installed to the system’s repository or bundled into the gems directory in an application’s distribution; Merb applications simply add the <code>/gems</code> folder as an alternate repository.
+      </p>
+      <p>
+        Plugins for Merb already include support for ActiveRecord, DataMapper, and Sequel, with support for <span class="caps">SQL</span> sessions, model generation, and database.yml baked in to all three. Merb-plugins Git repository also includes a helpers plugin (to add support for Rails-style form helpers).
+      </p>
+      <h2 id='controllers'>Controllers</h2>
+      <p>
+        Merb’s controllers are made up of two components. First, an <code>AbstractController</code>, which handles layout- and template-finding, instance variable assignment, and before/after filters. Second, a <code>Merb::Controller</code>, which handles request/response semantics. Because the components are separate, it is possible to inherit from <code>AbstractController</code>, which Merb does for Mailers and Parts (again, more on that later).
+      </p>
+      <p>
+        Controllers also support excellent content-type negotiation. You can specify in your controllers, or in individual actions, what <span class="caps">MIME</span>-types should be supported via <code>provides :xml, :html.</code> Once that information is provided, the controller has a number of ways to automatically render the appropriate content. If a template called <code>foo.html.erb</code> exists, it will automatically be rendered for all content-type <code>text/html</code>, and so on.
+      </p>
+      <p>
+        Additionally, calling <code>render @object</code>, will call <code>@object.to_mime_type</code> (for instance, <code>@object.to_xml</code>). The mime-type chosen in both cases is based upon either the file extension (<code>foo.html</code> maps to the <code>:html</code> type), or the <code>Accepts</code> header (the first acceptable content-type that’s also in the <code>provides</code> list). If the object doesn’t have the appropriate method, render will fall-back to rendering a template (so if the user requests, say, <span class="caps">HTML</span>, the lack of <code>#to_html</code> on the object will cause the <code>foo.html.erb</code> template to be loaded).
+      </p>
+      <h2 id='mailers'>Mailers</h2>
+      <p>
+        Merb’s Mailers are implemented on top of <code>AbstractController</code>, so you get all the default controller behavior (including templates, assigns, and before/after filters) for free in the Mailer. But instead of calling <code>render</code>, you call <code>render_mail</code>, which takes options like: <code>render_mail :html =&gt; :foo, :text =&gt; :bar.</code>
+      </p>
+      <p>
+        A number of options are supported, including attachments via an <code>#attach</code> method, so you can build up your multi-part mails with attachments and site-wide layouts fairly trivially.
+      </p>
+      <p>
+        Mailers have their own root directory, which contains controller classes inside it, as well as a views directory (which contains layouts, just like a regular controller), and an optional helpers directory. Because <code>AbstractController</code> can specify its layout root trivially, it’s easy to create new controller types and drop them in.
+      </p>
+      <p>
+        Mailers are called from a regular controller via <code>send_mail Klass, :action, options</code>, where options is a hash of options such as <code>from, to, subject, and cc.</code>
+      </p>
+      <h2 id='parts'>Parts</h2>
+      <p>
+        Like Mailers, parts take advantage of the flexibility of the <code>AbstractController</code> to allow simple Controller/View delegation. Parts have a directory structure that’s identical to the Mailer structure, and you can use them to separate out logic about partials that are used throughout your app.
+      </p>
+      <p>
+        For instance, you might have a tag-cloud that appears app-wide. You could create a <code>TagCloud</code> part, and have actions in the part set up the controller logic for the template. Like controllers and Mailers, parts can have layouts, templates, and before/after filters. Parts are called via part <code>TagCloud =&gt; :show</code>. Parts can also be used just to segment out the logic for sections of partials, so you have discrete components instead of one massive controller.
+      </p>
+      <h2 id='exceptions'>Exceptions</h2>
+      <p>
+        Merb also handles exceptions interestingly. Instead of exception raising throwing an error in your application, Merb catches certain types of exceptions and allows you to handle them in a controller/view fashion. For instance, raising <code>NotFound</code> will call the <code>Exception#not_found</code> action, which you can customizeas appropriate. Raising an error in this way will also send the appropriate error-code back to the browser.
+      </p>
+      <p>
+        All <span class="caps">HTTP</span> error codes are defined in Merb as Exception classes, so you can raise <code>NotAcceptable</code>, which will call <code>Exception#not_acceptable</code>, and return a 406 error to the client.
+      </p>
+      <h2 id='tests'>Tests and Specs</h2>
+      <p>
+        Merb is testing-framework-agnostic: you can use Test::Unit, Rspec, or test/spec. All three testing frameworks have built-in support for mock objects that allow you to micro-target your tests exactly as you like. And because Merb is so modular, it’s easy to test your controller without a request object at all, if you’d want to.
+      </p>
+      <h2 id='generators'>Generators</h2>
+      <p>
+        Merb has a series of generators that allow you get up and running quickly. The Merb application generator is started via <code>merb-gen app application-name</code>. It’ll build a skeleton app that includes folders for controllers, parts, and Mailers. Building a plugin is easy as well, <code>merb-gen plugin merb_plugin_name</code> will produce a very simple plugin skeleton with a few rake tasks to help you deploy the plugin (such as <code>rake package</code> and <code>rake install</code>).
+      </p>
+      <p>
+        In addition, Merb has controller generators, which create an empty controller file, a view directory with an empty <code>index.html.erb</code>, an empty helper file, and a test file in your chosen spec framework. Merb also has model generators, which are implemented by the <span class="caps">ORM</span> plugins, and support a special syntax: <code>merb-gen Product name:string price_in_cents:integer</code> will generate a new model that implements those attributes using its own syntax. For instance, ActiveRecord would generate a migration, while DataMapper would generate new model using its property syntax.
+      </p>
+    </div>
+  </div>
+</div>
