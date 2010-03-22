@@ -23,7 +23,7 @@ current: "contribute"
       <p>
         Contributing to Merb is as easy as checking the source out from Github, editing it, and creating a patch. <a href="http://gweezlebur.com/2008/2/1/so-you-want-to-contribute-to-merb-core-part-1">Learn all about using git, Github, and making patches.</a>
       </p
-      <pre><code>$ git clone git://github.com/wycats/merb-core.git<br />$ cd merb-core<br />$ vim the_source_file.rb<br />$ git commit -a -m "fix a bug"<br />$ git-format-patch master..</code></pre>
+      <pre><code>$ git clone git://github.com/merb/merb.git<br />$ cd merb-core<br />$ vim the_source_file.rb<br />$ git commit -a -m "fix a bug"<br />$ git-format-patch master..</code></pre>
       <h2>Code Style Guidelines</h2>
       <p>
         There are a few guidelines your code should follow.
@@ -33,7 +33,9 @@ current: "contribute"
       <h3>2. Two space indent</h3>
       <pre><code># BAD!<br />def tabby<br />    puts "A fat tab!"<br />end<br /><br /># GOOD!<br />def tabby<br />  puts "Two spaces!"<br />end</code></pre>
       <h3>3. Documentation is required</h3>
-      <p>As of 0.9, Merb has a new documentation system. It will be slightly changing for 1.0; for now, please follow these guidelines.</p>
+      <p>We would like to move merb over to a <a href="http://yardoc.org/">YARD</a> based documentation system.  To that end, we ask if you touch a file,
+      update it to YARD syntax.</p>
+      <p>The old style of the documentation follows this system:</p>
       <p>There are a number of available types:</p>
       <ul>
         <li>Class (e.g. <code>String</code>)</li>
