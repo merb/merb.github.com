@@ -62,7 +62,7 @@ current: "features"
       </p>
       <h2 id='exceptions'>Exceptions</h2>
       <p>
-        Merb also handles exceptions interestingly. Instead of exception raising throwing an error in your application, Merb catches certain types of exceptions and allows you to handle them in a controller/view fashion. For instance, raising <code>NotFound</code> will call the <code>Exception#not_found</code> action, which you can customizeas appropriate. Raising an error in this way will also send the appropriate error-code back to the browser.
+        Merb also handles exceptions interestingly. Instead of exception raising throwing an error in your application, Merb catches certain types of exceptions and allows you to handle them in a controller/view fashion. For instance, raising <code>NotFound</code> will call the <code>Exception#not_found</code> action, which you can customize as appropriate. Raising an error in this way will also send the appropriate error-code back to the browser.
       </p>
       <p>
         All <span class="caps">HTTP</span> error codes are defined in Merb as Exception classes, so you can raise <code>NotAcceptable</code>, which will call <code>Exception#not_acceptable</code>, and return a 406 error to the client.
